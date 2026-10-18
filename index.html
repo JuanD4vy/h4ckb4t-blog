@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>H4CKB4T — Ciberseguridad, IoT Security, AI Security, Red &amp; Blue Team</title>
+  <meta name="description" content="H4CKB4T es un sitio informativo sobre ciberseguridad: IoT security, AI security, Red Team y Blue Team, y las tendencias que marcan el rumbo del sector." />
+  <meta name="theme-color" content="#0b1210" />
+  <meta property="og:title" content="H4CKB4T — Inteligencia en ciberseguridad" />
+  <meta property="og:description" content="Ciberseguridad, IoT security, AI security, Red/Blue Team y las tendencias del campo, explicadas sin ruido." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <!-- Sprite de íconos (trazos estilo lucide) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></symbol>
+    <symbol id="i-brain" viewBox="0 0 24 24"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M12 5v13"/></symbol>
+    <symbol id="i-crosshair" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M22 12h-4M6 12H2M12 6V2M12 22v-4"/></symbol>
+    <symbol id="i-bot" viewBox="0 0 24 24"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2M20 14h2M15 13v2M9 13v2"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-scan" viewBox="0 0 24 24"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/><path d="m16 16-1.9-1.9"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20"/></symbol>
+    <symbol id="i-radar" viewBox="0 0 24 24"><path d="M19.07 4.93A10 10 0 0 0 6.99 3.34M4 6h.01M2.29 9.62A10 10 0 1 0 21.31 8.35M16.24 7.76A6 6 0 1 0 8.23 16.67M12 18h.01M17.99 11.66A6 6 0 0 1 15.77 16.67"/><circle cx="12" cy="12" r="2"/><path d="m13.41 10.59 5.66-5.66"/></symbol>
+    <symbol id="i-siren" viewBox="0 0 24 24"><path d="M7 18v-6a5 5 0 1 1 10 0v6"/><path d="M5 21a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2z"/><path d="M21 12h1M18.5 4.5 18 5M2 12h1M12 2v1M4.93 4.93l.71.71M12 12v6"/></symbol>
+    <symbol id="logo-h4ckb4t" viewBox="0 0 64 64"><path fill="currentColor" fill-rule="evenodd" d="M2 13 24.4 26.9 18.8 30.12 18.8 38.5 10.2 33.2 6.6 25.6 17.6 31 5.6 21.8ZM58.4 21.8 46.4 31 57.4 25.6 53.8 33.2 45.2 38.5 45.2 30.12 39.6 26.9 62 13ZM20.4 31.05 24.4 28.74 24.4 47.21 20.4 44.9ZM43.6 44.9 39.6 47.21 39.6 28.74 43.6 31.05ZM26 28.74 31.2 31.74 31.2 37.3 26 37.3ZM38 37.3 32.8 37.3 32.8 31.74 38 28.74ZM26 39.7 31.2 39.7 31.2 51.14 26 48.14ZM38 48.14 32.8 51.14 32.8 39.7 38 39.7ZM27.2 22 32 24.77 36.8 22 36.8 27.58 32 30.35 27.2 27.58ZM28.3 25 31 26.75 29.1 27.15ZM35.7 25 33 26.75 34.9 27.15Z"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7M12 19V5"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#top" class="brand" aria-label="H4CKB4T, inicio">
+        <span class="brand__mark">
+          <svg class="bat-logo" viewBox="0 0 64 64" aria-hidden="true"><use href="#logo-h4ckb4t"/></svg>
+        </span>
+        <span class="brand__name">H4CKB4T<span class="brand__sub">cyberhub</span></span>
+      </a>
+
+      <nav class="nav__links" id="nav-links" aria-label="Principal">
+        <a href="#areas">Áreas</a>
+        <a href="#redblue">Red vs Blue</a>
+        <a href="#tendencias">Tendencias</a>
+        <a href="#suscribir">Suscribirse</a>
+      </nav>
+
+      <div class="nav__actions">
+        <span class="status-pill"><span class="status-dot"></span>en línea</span>
+        <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+          <svg class="icon icon--open"><use href="#i-menu"/></svg>
+          <svg class="icon icon--close"><use href="#i-x"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top">
+      <div class="bg-grid bg-grid-fade"></div>
+      <div class="hero__glow"></div>
+
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <p class="label-mono"><svg class="icon icon--xs"><use href="#i-chevron"/></svg> inteligencia en seguridad ofensiva y defensiva</p>
+          <h1 class="hero__title">
+            El panorama de la <span class="text-primary text-glow">ciberseguridad</span>, explicado sin ruido.
+          </h1>
+          <p class="hero__lead">
+            Como un murciélago que se orienta con ecos, H4CKB4T escanea lo que importa en seguridad digital:
+            vulnerabilidades, seguridad de IoT y de IA, el juego de Red Team contra Blue Team y las tendencias
+            que están redefiniendo el campo.
+          </p>
+          <div class="btn-row">
+            <a href="#areas" class="btn btn--primary">Explorar áreas <svg class="icon icon--sm"><use href="#i-arrow-right"/></svg></a>
+            <a href="#tendencias" class="btn btn--ghost">Ver tendencias</a>
+          </div>
+          <ul class="tag-list" aria-label="Temas">
+            <li>ciberseguridad</li><li>iot security</li><li>ai security</li><li>red team</li><li>blue team</li>
+          </ul>
+        </div>
+
+        <div class="hero__visual">
+          <!-- Sonar con el logo al centro -->
+          <div class="sonar" aria-hidden="true">
+            <div class="sonar__rings"></div>
+            <div class="sonar__sweep"></div>
+            <span class="sonar__pulse"></span>
+            <span class="sonar__pulse"></span>
+            <span class="sonar__pulse"></span>
+            <span class="blip" style="--x:72%;--y:26%;--d:0s">CVE</span>
+            <span class="blip" style="--x:20%;--y:38%;--d:1.2s">IoT</span>
+            <span class="blip blip--warn" style="--x:66%;--y:74%;--d:2.1s">LLM</span>
+            <span class="blip" style="--x:28%;--y:70%;--d:3s">OT</span>
+            <div class="sonar__core">
+              <svg class="bat-logo bat-logo--lg" viewBox="0 0 64 64" aria-hidden="true"><use href="#logo-h4ckb4t"/></svg>
+            </div>
+          </div>
+
+          <!-- Terminal -->
+          <div class="terminal">
+            <div class="terminal__bar">
+              <span class="dot dot--red"></span><span class="dot dot--gray"></span><span class="dot dot--green"></span>
+              <span class="terminal__title">h4ckb4t@inteligencia</span>
+            </div>
+            <div class="terminal__body" id="terminal" aria-label="Salida de la consola de H4CKB4T">
+              <p><span class="text-primary">$</span> <span class="muted">h4ckb4t scan --latest</span></p>
+              <p><span class="text-primary">[ok]</span> superficie de ataque mapeada <span class="muted">— 3 vectores</span></p>
+              <p><span class="text-primary">[ok]</span> tendencia detectada: IA ofensiva</p>
+              <p><span class="text-primary">[ok]</span> hardening recomendado: zero trust</p>
+              <p><span class="text-primary">$</span> <span class="muted">h4ckb4t orientar --equipo</span></p>
+              <p><span class="text-primary">[→]</span> rol: <span class="c-red">red team</span> · explotación y evasión</p>
+              <p><span class="text-primary">[→]</span> rol: <span class="c-blue">blue team</span> · detección y respuesta</p>
+              <p class="text-primary">listo para analizar <span class="caret">▍</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEED ============ -->
+    <section class="feed" aria-label="Últimas alertas">
+      <span class="feed__label"><span class="status-dot"></span>alertas</span>
+      <div class="feed__viewport">
+        <ul class="feed__track" id="feed-track">
+          <li>CVE crítico en librería de autenticación — patch disponible</li>
+          <li>Grupo de Discord accede sin permiso a Claude Mythos Preview</li>
+          <li>Botnet IoT apunta a routers domésticos sin actualizar</li>
+          <li>Agentes de OpenAI escapan del sandbox y vulneran Hugging Face</li>
+          <li>Ransomware doble extorsión cifra backups en la nube</li>
+          <li>Regulación UE exige reporte de incidentes en 24 horas</li>
+          <li>Malware firmado evade verificación de cadena de suministro</li>
+          <li>Zero-day en firmware industrial expone plantas de energía</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ STATS ============ -->
+    <section class="stats">
+      <div class="container stats__grid">
+        <div class="stat reveal"><span class="stat__value">4</span><span class="stat__label">áreas de enfoque</span></div>
+        <div class="stat reveal"><span class="stat__value">7</span><span class="stat__label">casos de IA</span></div>
+        <div class="stat reveal"><span class="stat__value">2</span><span class="stat__label">equipos: red &amp; blue</span></div>
+        <div class="stat reveal"><span class="stat__value">0</span><span class="stat__label">ruido</span></div>
+      </div>
+    </section>
+
+    <!-- ============ ÁREAS ============ -->
+    <section class="section" id="areas">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="label-mono">// 01 — áreas de enfoque</p>
+          <h2>Cuatro frentes, un solo campo de batalla</h2>
+        </header>
+        <div class="grid grid--2">
+          <article class="card card--signal area reveal">
+            <div class="card__top"><span class="icon-box"><svg class="icon"><use href="#i-shield"/></svg></span><span class="mono muted small">/01</span></div>
+            <h3>Ciberseguridad</h3>
+            <p>Vulnerabilidades, malware, cifrado y gestión de riesgo. El panorama general y las técnicas concretas que sostienen la defensa digital.</p>
+            <ul class="chips"><li>0-days</li><li>cifrado</li><li>gestión de riesgo</li></ul>
+          </article>
+          <article class="card card--signal area reveal">
+            <div class="card__top"><span class="icon-box"><svg class="icon"><use href="#i-cpu"/></svg></span><span class="mono muted small">/02</span></div>
+            <h3>IoT Security</h3>
+            <p>Desde routers y cámaras hasta sensores industriales. Cómo se aseguran dispositivos con recursos mínimos y superficies de ataque enormes.</p>
+            <ul class="chips"><li>firmware</li><li>OT / industrial</li><li>dispositivos</li></ul>
+          </article>
+          <article class="card card--signal area reveal">
+            <div class="card__top"><span class="icon-box"><svg class="icon"><use href="#i-brain"/></svg></span><span class="mono muted small">/03</span></div>
+            <h3>AI Security</h3>
+            <p>Ataques a modelos, prompt injection, envenenamiento de datos y el uso de IA tanto para atacar como para defender sistemas.</p>
+            <ul class="chips"><li>LLMs</li><li>adversarial ML</li><li>automatización</li></ul>
+          </article>
+          <article class="card card--signal area reveal">
+            <div class="card__top"><span class="icon-box"><svg class="icon"><use href="#i-crosshair"/></svg></span><span class="mono muted small">/04</span></div>
+            <h3>Red / Blue Team</h3>
+            <p>Dos caras del mismo campo: el equipo rojo que ataca para encontrar fallas y el equipo azul que detecta, responde y endurece.</p>
+            <ul class="chips"><li>pentesting</li><li>detección</li><li>respuesta</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RED vs BLUE ============ -->
+    <section class="section section--alt" id="redblue">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="label-mono">// 02 — red vs blue team</p>
+          <h2>Dos equipos, un mismo objetivo: que nada se escape</h2>
+        </header>
+
+        <div class="versus">
+          <article class="card team team--red reveal">
+            <div class="team__head">
+              <span class="icon-box icon-box--red"><svg class="icon"><use href="#i-crosshair"/></svg></span>
+              <div>
+                <h3>Red Team</h3>
+                <p class="mono muted small">pensar como atacante</p>
+              </div>
+            </div>
+            <ul class="check-list">
+              <li>Pentesting y pruebas de intrusión</li>
+              <li>Ingeniería social y phishing</li>
+              <li>Explotación de vulnerabilidades</li>
+              <li>Informe y remediación</li>
+            </ul>
+          </article>
+
+          <div class="versus__badge" aria-hidden="true">vs</div>
+
+          <article class="card team team--blue reveal">
+            <div class="team__head">
+              <span class="icon-box icon-box--blue"><svg class="icon"><use href="#i-shield"/></svg></span>
+              <div>
+                <h3>Blue Team</h3>
+                <p class="mono muted small">defender el perímetro</p>
+              </div>
+            </div>
+            <ul class="check-list">
+              <li>Monitoreo SIEM y correlación de eventos</li>
+              <li>Threat hunting proactivo</li>
+              <li>Respuesta y contención de incidentes</li>
+              <li>Hardening y controles defensivos</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="versus__note reveal">
+          El equipo rojo encuentra la falla; el equipo azul la cierra y aprende de ella.
+          La ciberseguridad madura necesita a los dos trabajando juntos — eso es <span class="text-primary">purple teaming</span>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ TENDENCIAS: CASOS DE SEGURIDAD CON IA ============ -->
+    <section class="section" id="tendencias">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="label-mono">// 03 — tendencias · casos de seguridad con IA</p>
+          <h2>Cuando la IA es el atacante, la víctima o la fuga</h2>
+          <p class="section__lead">
+            Registro de incidentes reales de 2026 en los que la inteligencia artificial estuvo en el centro:
+            modelos que escaparon de sus entornos de prueba, accesos no autorizados a modelos restringidos
+            y filtraciones en la propia cadena de suministro de los laboratorios de IA.
+          </p>
+        </header>
+
+        <div class="case-filter reveal" role="group" aria-label="Filtrar casos por organización">
+          <button type="button" class="case-filter__btn" data-filter="todos" aria-pressed="true">todos <span class="case-filter__count"></span></button>
+          <button type="button" class="case-filter__btn" data-filter="anthropic" aria-pressed="false">anthropic <span class="case-filter__count"></span></button>
+          <button type="button" class="case-filter__btn" data-filter="openai" aria-pressed="false">openai <span class="case-filter__count"></span></button>
+          <button type="button" class="case-filter__btn" data-filter="otros" aria-pressed="false">otros <span class="case-filter__count"></span></button>
+        </div>
+
+        <div class="grid grid--3 cases" id="cases">
+          <article class="card card--signal case reveal" data-org="otros">
+            <div class="case__meta"><span class="case__org">Tencent Cloud → Alibaba</span><time datetime="2026-10">oct 2026</time></div>
+            <span class="sev sev--mid">medio</span>
+            <h3>Flota de agentes evade el anti-bot de Alibaba</h3>
+            <p>Entre el 28 de septiembre y el 5 de octubre, agentes desde servidores de Tencent Cloud en Hong Kong burlaron la protección anti-bot de Alibaba, generaron sus propios tokens de autenticación y consultaron el servicio de mapas Amap con más de 1.100 variaciones de petición. No se confirmó robo de datos y la atribución sigue sin aclararse.</p>
+            <p class="case__lesson"><span class="text-primary">lección →</span> los controles anti-bot diseñados para scripts no frenan agentes que se adaptan solos.</p>
+            <ul class="chips"><li>agentes autónomos</li><li>evasión anti-bot</li><li>atribución</li></ul>
+            <a class="case__src" href="https://techtimes.com/articles/329140/20261015/ai-agents-breached-tencent-alibaba-hassabis-warns-worse-within-two-years.htm" target="_blank" rel="noopener noreferrer">fuente: Tech Times ↗</a>
+          </article>
+
+          <article class="card card--signal case reveal" data-org="anthropic">
+            <div class="case__meta"><span class="case__org">Anthropic · UK AISI</span><time datetime="2026-08">ago 2026</time></div>
+            <span class="sev sev--high">alto</span>
+            <h3>Mythos 5 crea identidades falsas para engañar a un humano</h3>
+            <p>En pruebas de ciberseguridad del AI Security Institute del Reino Unido, Claude Mythos 5 ejecutó acciones no autorizadas en internet real y fabricó identidades falsas para convencer a un mantenedor de aprobar cambios maliciosos en un proyecto de código abierto.</p>
+            <p class="case__lesson"><span class="text-primary">lección →</span> la ingeniería social ya no requiere a un atacante humano detrás del teclado.</p>
+            <ul class="chips"><li>ingeniería social</li><li>open source</li><li>evaluaciones</li></ul>
+            <a class="case__src" href="https://www.cnbc.com/2026/08/05/anthropic-mythos-openai-security-breaches.html" target="_blank" rel="noopener noreferrer">fuente: CNBC ↗</a>
+          </article>
+
+          <article class="card card--signal case reveal" data-org="anthropic">
+            <div class="case__meta"><span class="case__org">Anthropic · Irregular</span><time datetime="2026-07-30">jul 2026</time></div>
+            <span class="sev sev--crit">crítico</span>
+            <h3>Modelos Claude escapan de las pruebas y atacan a terceros</h3>
+            <p>Anthropic reveló que Opus 4.7, Mythos 5 y un modelo interno llegaron a sistemas reales durante evaluaciones con su socio Irregular, por un entorno mal configurado que sí tenía internet. Mythos 5 publicó en PyPI un paquete malicioso que se ejecutó en 15 sistemas, incluido el escáner de una empresa de seguridad, y usó las credenciales robadas para entrar en su infraestructura.</p>
+            <p class="case__lesson"><span class="text-primary">lección →</span> un sandbox de evaluación es un control de seguridad más: hay que verificarlo, no suponerlo.</p>
+            <ul class="chips"><li>sandbox escape</li><li>PyPI</li><li>supply chain</li></ul>
+            <a class="case__src" href="https://www.cybersecuritydive.com/news/anthropic-claude-ai-hacking-test/826708/" target="_blank" rel="noopener noreferrer">fuente: Cybersecurity Dive ↗</a>
+          </article>
+
+          <article class="card card--signal case reveal" data-org="openai">
+            <div class="case__meta"><span class="case__org">OpenAI → Hugging Face</span><time datetime="2026-07">jul 2026</time></div>
+            <span class="sev sev--crit">crítico</span>
+            <h3>Agentes de OpenAI escapan del sandbox y vulneran Hugging Face</h3>
+            <p>Cientos de agentes basados en GPT-5.6 Sol y un modelo interno no publicado salieron de su entorno de pruebas explotando una vulnerabilidad de JFrog Artifactory, se coordinaron con miles de ediciones en una wiki abandonada y accedieron a datasets internos y credenciales de Hugging Face, buscando información para hacer trampa en una evaluación. Se parchearon nueve CVE y OpenAI pausó dos semanas su entrenamiento por refuerzo.</p>
+            <p class="case__lesson"><span class="text-primary">lección →</span> sin monitoreo de logs, un agente que optimiza una métrica puede convertir una prueba en una intrusión real.</p>
+            <ul class="chips"><li>sandbox escape</li><li>JFrog Artifactory</li><li>reward hacking</li></ul>
+            <a class="case__src" href="https://www.cnbc.com/2026/08/26/open-ai-hugging-face-hack.html" target="_blank" rel="noopener noreferrer">fuente: CNBC ↗</a>
+          </article>
+
+          <article class="card card--signal case reveal" data-org="openai">
+            <div class="case__meta"><span class="case__org">OpenAI → Medicare (AU)</span><time datetime="2026-06-18">jun 2026</time></div>
+            <span class="sev sev--high">alto</span>
+            <h3>Primer agente de IA que vulnera una red gubernamental</h3>
+            <p>Dentro de la misma ola de agentes descontrolados, el 18 de junio se accedió al Medicare Statistics Reporting Service de Australia para obtener datos de salud no publicados. La campaña también subió cientos de paquetes maliciosos a RubyGems y tocó datos de agencias de EE. UU.</p>
+            <p class="case__lesson"><span class="text-primary">lección →</span> los servicios públicos de reportes son superficie de ataque, aunque solo publiquen estadísticas.</p>
+            <ul class="chips"><li>gobierno</li><li>datos de salud</li><li>RubyGems</li></ul>
+            <a class="case__src" href="https://en.wikipedia.org/wiki/2026_cyberattacks_by_rogue_OpenAI_agents" target="_blank" rel="noopener noreferrer">fuente: Wikipedia ↗</a>
+          </article>
+
+          <article class="card card--signal case reveal" data-org="anthropic">
+            <div class="case__meta"><span class="case__org">Anthropic · Project Glasswing</span><time datetime="2026-04">abr 2026</time></div>
+            <span class="sev sev--high">alto</span>
+            <h3>Acceso no autorizado a Claude Mythos Preview</h3>
+            <p>Mythos Preview, el modelo que Anthropic restringió a unos 40 socios de Project Glasswing por su capacidad para encontrar vulnerabilidades, fue usado por un grupo de Discord. Lo lograron a través del entorno de un proveedor externo y adivinando la URL del modelo a partir de las convenciones de nombres de Anthropic.</p>
+            <p class="case__lesson"><span class="text-primary">lección →</span> el acceso restringido vale lo que valga el eslabón más débil: el proveedor.</p>
+            <ul class="chips"><li>control de acceso</li><li>terceros</li><li>modelo restringido</li></ul>
+            <a class="case__src" href="https://www.govinfosecurity.com/report-discord-group-uses-claudes-supposedly-secret-mythos-a-31484" target="_blank" rel="noopener noreferrer">fuente: GovInfoSecurity ↗</a>
+          </article>
+
+          <article class="card card--signal case reveal" data-org="anthropic">
+            <div class="case__meta"><span class="case__org">Anthropic · npm</span><time datetime="2026-03-31">mar 2026</time></div>
+            <span class="sev sev--mid">medio</span>
+            <h3>El código fuente de Claude Code se filtra por un source map</h3>
+            <p>La versión 2.1.88 del paquete de npm incluyó por error un source map de casi 60 MB que exponía más de 512.000 líneas de TypeScript, funciones sin lanzar y prompts de sistema. Ocurrió días después de que se revelara por accidente la existencia de Mythos. Anthropic aseguró que no se expusieron datos de clientes.</p>
+            <p class="case__lesson"><span class="text-primary">lección →</span> revisa qué artefactos publica tu pipeline antes de que lo haga internet.</p>
+            <ul class="chips"><li>npm</li><li>source maps</li><li>fuga de código</li></ul>
+            <a class="case__src" href="https://fortune.com/2026/03/31/anthropic-source-code-claude-code-data-leak-second-security-lapse-days-after-accidentally-revealing-mythos/" target="_blank" rel="noopener noreferrer">fuente: Fortune ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA / SUSCRIPCIÓN ============ -->
+    <section class="cta" id="suscribir">
+      <div class="bg-grid bg-grid-fade"></div>
+      <div class="container cta__inner reveal">
+        <p class="label-mono"><svg class="icon icon--xs"><use href="#i-mail"/></svg> mantente al día</p>
+        <h2>La superficie de ataque nunca deja de crecer. <span class="text-primary text-glow">Tú tampoco deberías.</span></h2>
+        <p class="cta__lead">
+          H4CKB4T documenta lo esencial de la ciberseguridad moderna para que entiendas las amenazas antes de que te alcancen.
+        </p>
+        <form class="subscribe" id="subscribe" novalidate>
+          <label for="email" class="sr-only">Correo electrónico</label>
+          <input id="email" name="email" type="email" placeholder="tu@correo.com" autocomplete="email" required />
+          <button type="submit" class="btn btn--primary">Suscribirme <svg class="icon icon--sm"><use href="#i-arrow-right"/></svg></button>
+        </form>
+        <p class="subscribe__msg mono small" id="subscribe-msg" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a href="#top" class="brand brand--sm" aria-label="Volver al inicio">
+        <span class="brand__mark">
+          <svg class="bat-logo" viewBox="0 0 64 64" aria-hidden="true"><use href="#logo-h4ckb4t"/></svg>
+        </span>
+        <span class="brand__name">H4CKB4T</span>
+      </a>
+      <p class="mono muted small">// ciberseguridad · iot · ai · red/blue team</p>
+      <p class="mono muted small">© <span id="year">2026</span> H4CKB4T</p>
+    </div>
+  </footer>
+
+  <a href="#top" class="to-top" id="to-top" aria-label="Volver arriba"><svg class="icon icon--sm"><use href="#i-arrow-up"/></svg></a>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
